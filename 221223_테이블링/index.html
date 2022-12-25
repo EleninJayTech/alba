@@ -43,27 +43,38 @@
 	</div>
 
 	<style>
+		/* 이미지 크기 225px */
+		/* 1단 2단 사이 간격 24px */
+		/* 이미지 사이 간격 24px */
 		.on_slide_wrap.pc{
 			width: 100%;
-			height: 500px;
+			height: 474px; /* 영역 전체 높이 */
 		}
 		.on_slide_wrap.pc .on_slide{
 			width: 100%;
-			height: 250px;
+			height: 225px; /* 한줄 높이 */
 			position: absolute;
 			left: 0;
-			top: 0;
+			top: 0; /* 첫번째 줄 시작 위치*/
 		}
 		.on_slide_wrap.pc .on_slide.row_2{
-			top: 250px;
+			top: 249px; /* 두번째 줄 시작 위치 */
 		}
 		.on_slide_wrap.pc .on_slide .on_slide_cont{
 			width: 10000px;
 			position: absolute;
 		}
+		.on_slide_wrap.pc .on_slide .on_slide_cont img{
+			width: 225px; /* 이미지 가로 크기 */
+		}
 		.on_slide_wrap.pc .on_slide .on_slide_cont > div{
 			float: left;
-			padding: 0 10px;
+			padding-top: 0;
+			padding-bottom: 0;
+
+			/* ▼ 이미지 좌우 간격 ▼ */
+			padding-left: 12px; /* 이미지 왼쪽 */
+			padding-right: 12px; /* 이미지 오른쪽 */
 		}
 	</style>
 

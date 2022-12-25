@@ -49,30 +49,41 @@
 	</div>
 
 	<style>
+		/* 모바일 시안 이미지 84x84 */
+		/* 이미지 사이 간격 8px */
+		/* 이미지 단 별 간격 12px */
 		.on_slide_wrap.mobile.mobile{
 			width: 100%;
-			height: 750px;
+			height: 276px; /* 전체 영역 높이 */
 		}
 		.on_slide_wrap.mobile .on_slide{
 			width: 100%;
-			height: 250px;
+			height: 84px; /* 한줄 높이 */
 			position: absolute;
 			left: 0;
-			top: 0;
+			top: 0; /* 1단 시작 상단 부분 */
 		}
 		.on_slide_wrap.mobile .on_slide.row_2{
-			top: 250px;
+			top: 96px; /* 2단 시작 상단 부분 */
 		}
 		.on_slide_wrap.mobile .on_slide.row_3{
-			top: 500px;
+			top: 192px; /* 3단 시작 상단 부분 */
 		}
 		.on_slide_wrap.mobile .on_slide .on_slide_cont{
 			width: 10000px;
 			position: absolute;
 		}
+		.on_slide_wrap.mobile .on_slide .on_slide_cont img{
+			width: 84px; /* 이미지 가로 크기 */
+		}
 		.on_slide_wrap.mobile .on_slide .on_slide_cont > div{
 			float: left;
-			padding: 0 10px;
+			padding-top: 0;
+			padding-bottom: 0;
+
+			/* ▼ 이미지 좌우 간격 ▼ */
+			padding-left: 4px; /* 이미지 왼쪽 */
+			padding-right: 4px; /* 이미지 오른쪽 */
 		}
 	</style>
 
