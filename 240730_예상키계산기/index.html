@@ -42,30 +42,6 @@
   </div>
 </div>
 
-<div id="로얄" class="col_form">
-  <div class="container">
-    <div class="header">
-      <img src="https://wooasung.com/sub/img/070403.jpg">
-      <h1>어떤 성분을 먹여야 더 클까요?</h1>
-    </div>
-    <div class="form-group">
-      <label>혈액형</label>
-      <input type="text" id="혈액형">
-      형
-    </div>
-    <div class="form-group">
-      <label>현재 키</label>
-      <input type="text" id="현재키">
-      cm
-    </div>
-    <button class="submit-button" id="확인하기">확인하기</button>
-    <div class="result">
-      <span id="결과2">0</span> cm<br>
-      로얄젤리 섭취 시 7cm 더 클 수 있어요!
-    </div>
-  </div>
-</div>
-
 <style>
   .col_form .container {
     background: white;
@@ -170,10 +146,10 @@
 
     // 로얄젤리 키 계산
     $('#확인하기').on('click', function () {
-      const 혈액형 = parseFloat($('#혈액형').val());
+      const 혈액형 = $('#혈액형').val();
       const 현재키 = parseFloat($('#현재키').val());
 
-      if (isNaN(혈액형) || isNaN(현재키)) {
+      if (!혈액형 || isNaN(현재키)) {
         return;
       }
 
@@ -183,6 +159,35 @@
     });
   });
 </script>
+
+<!---->
+<!---->
+<!---->
+<!---->
+
+<div id="로얄" class="col_form">
+  <div class="container">
+    <div class="header">
+      <img src="https://wooasung.com/sub/img/070403.jpg">
+      <h1>어떤 성분을 먹여야 더 클까요?</h1>
+    </div>
+    <div class="form-group">
+      <label>혈액형</label>
+      <input type="text" id="혈액형">
+      형
+    </div>
+    <div class="form-group">
+      <label>현재 키</label>
+      <input type="text" id="현재키">
+      cm
+    </div>
+    <button class="submit-button" id="확인하기">확인하기</button>
+    <div class="result">
+      <span id="결과2">0</span> cm<br>
+      로얄젤리 섭취 시 7cm 더 클 수 있어요!
+    </div>
+  </div>
+</div>
 
 <!---->
 <!---->
