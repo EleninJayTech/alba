@@ -261,6 +261,11 @@
 		margin: 0;
 	}
 
+	/* 로얄젤리 결과 폰트 크기 */
+	#로얄.col_form .result .desc p, #로얄.col_form .result .desc p *{
+		font-size: 20px !important;
+	}
+
 	.col_form .submit-button {
 		display: block;
 		width: 100%;
@@ -279,6 +284,11 @@
 </style>
 
 <script>
+	StaticData = {
+		result_1:0,
+		result_2:0
+	};
+
 	function genderCheckLabel() {
 		$(".col_form .form-group.radio_form label").removeClass('checked');
 		// #gender_female == checked 면 .gender_female 에 addClass checked
@@ -300,7 +310,8 @@
 		return (result);
 	}
 
-	function animateResult(target, value, nextValue) {
+	function animateResult(target, value, step1) {
+		StaticData.result_1 = 0;
 		$({countNum: target.text()}).animate({countNum: value}, {
 			duration: 500,
 			easing: 'linear',
@@ -309,9 +320,11 @@
 			},
 			complete: function () {
 				target.text(this.countNum);
-				if (nextValue) {
+				// 첫번째 결과 일 때
+				if (step1) {
+					StaticData.result_1 = this.countNum;
 					$("#결과2").text(this.countNum);
-					// $("#예상키").val(this.countNum);
+					// $("#현재키").val(this.countNum);
 				}
 			}
 		});
@@ -344,17 +357,18 @@
 		$('#확인하기').on('click', function () {
 			$('#로얄 .result .desc').css({opacity: 0})
 			const 혈액형 = $('#혈액형').val();
-			const 예상키 = parseFloat($('#예상키').val());
+			const 현재키 = parseFloat($('#현재키').val());
 
-			if (!혈액형 || isNaN(예상키)) {
+			if (!혈액형 || isNaN(현재키)) {
 				return;
 			}
 
-			$('#결과2').text(예상키);
+			let 계산키 = StaticData.result_1 > 0 ? StaticData.result_1 : 현재키;
+			$('#결과2').text(계산키);
 			setTimeout(function () {
-				const predictedHeight = 예상키 * 1.05;
+				const predictedHeight = 계산키 * 1.05;
 				const newHeight = Math.floor(predictedHeight * 10) / 10;
-				const 키차이 = newHeight - 예상키;
+				const 키차이 = newHeight - 계산키;
 				$("#키차이").text(Math.floor(키차이));
 				animateResult($('#결과2'), newHeight);
 				$('#로얄 .result .desc').animate({opacity: 1}, 500);
@@ -381,8 +395,8 @@
 				</div>
 				<div class="form-group">
 					<div class="key_input_box">
-						<label>예상 키</label>
-						<input type="text" id="예상키">
+						<label>현재키</label>
+						<input type="text" id="현재키">
 						<span class="cm">cm</span>
 					</div>
 				</div>
@@ -396,7 +410,7 @@
 							<span class="cm">cm</span>
 						</div>
 						<div class="desc opa_0">
-							<p style="line-height: 1.3;"><b>로얄젤리</b> 섭취 시<br>
+							<p style="line-height: 1.3;"><b>로얄젤리</b> 섭취 시 예상키보다<br>
 							<p><span id="키차이"></span>cm 더 클 수 있어요!</p>
 						</div>
 					</div>
